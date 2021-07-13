@@ -3,7 +3,7 @@ let carta = document.querySelector('#card')
 let informacion;
 
 async function obtener() {
-    informacion = await fetch(`http://localhost:3000/search/${toSearch.value}`).then((data) => {
+    informacion = await fetch(`https://bsale-jesus.herokuapp.com/search/${toSearch.value}`).then((data) => {
         return data.json()
     }).catch((err) => {
         console.log(err);

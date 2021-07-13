@@ -1,7 +1,7 @@
 let info
 let card = document.querySelector("#card")
 async function obtener() {
-    info = await fetch('http://localhost:3000/Comida').then((data) => {
+    info = await fetch('https://bsale-jesus.herokuapp.com/Comida').then((data) => {
             return data.json()
         }).catch((err) => {
             console.log(err);
