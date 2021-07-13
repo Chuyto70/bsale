@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Tienda de Comida</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">La Tiendita</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio
+                        <img class="mb-1" src="data:image/svg+xml;base64,PHN2ZyBpZD0ibGlnaHQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnPjxwYXRoIGQ9Im0xOS41IDI0aC00Yy0uMjc2IDAtLjUtLjIyNC0uNS0uNXYtN2MwLS4yNzYtLjIyNC0uNS0uNS0uNWgtNWMtLjI3NiAwLS41LjIyNC0uNS41djdjMCAuMjc2LS4yMjQuNS0uNS41aC00Yy0uODI3IDAtMS41LS42NzMtMS41LTEuNXYtOS41aC0yYy0uNTUxIDAtMS0uNDQ5LTEtMSAwLS4yNjUuMTA4LS41MjUuMjk2LS43MTNsMTEuMzU0LTExLjE0NGMuMTk0LS4xOS41MDYtLjE5LjcgMGwxMS4zNSAxMS4xNGMuMTkyLjE5Mi4zLjQ1Mi4zLjcxNyAwIC41NTEtLjQ0OSAxLTEgMWgtMnY5LjVjMCAuODI3LS42NzMgMS41LTEuNSAxLjV6bS0zLjUtMWgzLjVjLjI3NiAwIC41LS4yMjQuNS0uNXYtMTBjMC0uMjc2LjIyNC0uNS41LS41aDIuNWwtMTEtMTAuNzk5LTExIDEwLjc5NiAyLjUuMDAzYy4yNzYgMCAuNS4yMjQuNS41djEwYzAgLjI3Ni4yMjQuNS41LjVoMy41di02LjVjMC0uODI3LjY3My0xLjUgMS41LTEuNWg1Yy44MjcgMCAxLjUuNjczIDEuNSAxLjV6Ii8+PC9nPjwvc3ZnPg=="
+                            width="18px" /></a>
+                    </li>
+
+                </ul>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Ir" aria-label="Search" id="value">
+                    <button class="btn btn-outline-success" type="button" onclick="buscar()">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="py-5 text-center container">
+
+
+
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <img src="./assets/logo.png" alt="" srcset="" width="70%">
+        </div>
+
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="card">
+                <div class="col zoom">
+                    <a href="/postres.html" style="text-decoration: none; color: black;">
+                        <div class="card shadow-sm">
+                            <img style="max-height: 232px;" src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2020/12/recetas-de-postres-con-galletas-oreo-faciles.jpg" alt="" srcset="" width="100%">
+
+                            <div class="card-body">
+                                <p class="card-text text-center fs-5">Postres</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col zoom">
+                    <div class="card shadow-sm">
+                        <a style="text-decoration: none; color: black;" href="/comidas.html"> <img src="https://ichef.bbci.co.uk/news/640/cpsprodpb/134E3/production/_105057097_a226d870-cc5f-4043-9f4b-d452b75cc280.jpg" alt="" width="100%">
+
+
+                            <div class="card-body">
+                                <p class="card-text text-center fs-5">Comidas</p>
+
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col zoom">
+                    <a style="text-decoration: none; color: black;" href="/bebidas.html">
+                        <div class="card shadow-sm">
+                            <img src="https://cdn.aarp.net/content/dam/aarp/food/recipes/2018/10/1140-limofresa-gas-drink-esp.jpg" alt="" width="100%">
+
+                            <div class="card-body">
+                                <p class="card-text text-center fs-5">Bebidas</p>
+
+                            </div>
+                        </div>
+                </div>
+
+
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./controllers/index.js"></script>
+</body>
+
+</html>
