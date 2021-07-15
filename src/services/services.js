@@ -1,80 +1,92 @@
-const Product = require('../models/product')
 const { response, request } = require('express');
+const pool = require('../db')
 
-//Metodo post para ingresar mas elementos a la bbdd
-
-async function postProduct(req, res = response) {
-    if (!req.body || req.body == null || req.body == undefined) {
-        return {
-            message: "Necesitas ingresar datos al body"
-        };
-    }
-
-    const { name, url_image, price, discount, category } = await req.body;
-    const product = new Product({ name, url_image, price, discount, category });
-
-    await product.save((err, respuesta) => {
-        if (err) {
-            return res.json({
-                mensaje: "Error en la base de datos",
-                Error: err
-            })
-        }
-        return res.json({
-            respuesta
-        });
-    })
-}
 //Metodo GET para obtener todos los elementos
 
-async function getProduct(req, res = response) {
-    const data = await Product.find({})
-    return res.json({
-        data
+function getProduct(req, res = response) {
+    pool.query('SELECT * FROM product', async(err, result) => {
+
+        let data = await result
+        return res.json(data)
     })
 }
+
+
+
 
 //Filtrar por categorias
 
 async function catFilter(req, res = response) {
-    const toSearch = await req.params.category;
-    let data = await Product.find({ category: toSearch })
-    if (data.length < 1) {
-        return res.json({
-            Mensaje: "Categoria no valida"
-        })
-    }
-    return res.json({
-        data
+    let categorias = [1, 2, 3, 4, 5, 6, 7]
+    pool.query('SELECT * FROM product', (err, result) => {
+        for (let i = 0; i < result.length; i++) {
+
+            if (categorias.indexOf(result[i].category) > -1) {
+                if (result[i].url_image.length <= 0) {
+                    result[i].url_image = 'https://ecommerce.suministrosalarcon.com/assets/images/image-not-found.png'
+                }
+                categorias.splice(categorias.indexOf(result[i].category), 1, result[i])
+
+            }
+        }
+        return res.json(categorias)
     })
 }
 
-//Buscador
-async function searchFilter(req, res = response) {
-    const toSearch = await req.params.nombre;
-    let datos = await Product.find({});
-    let result = []
-    for (let dato of datos) {
-        if (dato.name.toLowerCase().indexOf(toSearch.toLowerCase()) >= 0) {
-            result.push(dato)
-        }
-    }
-    if (result.length < 1) {
-        return res.json({
-            Mensaje: `No hay resultado de ${toSearch}`
-        })
-    }
-    return res.json({
-        result
+//Seleccionando la categoria
+async function selectCat(req, res = response) {
+    let categoria = req.params.id
+
+    pool.query('SELECT * FROM product', (err, result) => {
+        let data = result.filter(element => element.category == categoria)
+        return res.json(data)
     })
 
+}
 
+//Categoria seleccionada
+async function selectedCat(req, res = response) {
+    let param = req.params.id;
+    pool.query('SELECT * FROM product', (err, result) => {
 
+        if (err) {
+            return res.json({ err: 'Error al consultar la base de datos', err })
+        }
+
+        let categoria = result.filter(elemento => elemento.category == param)
+        for (let cat of categoria) {
+            if (cat.url_image < 1) {
+                cat.url_image = 'https://ecommerce.suministrosalarcon.com/assets/images/image-not-found.png'
+            }
+        }
+        return res.json(categoria)
+    })
+}
+//Buscador
+async function searchFilter(req, res = response) {
+    const toSearch = await req.params.name;
+    let datos;
+
+    let resulta = []
+    pool.query('SELECT * FROM product', (err, result) => {
+        if (err) {
+            return res.json({ mensaje: 'Error al conectarse a la base de datos' })
+        }
+        for (let dato of result) {
+            if (dato.name.toLowerCase().indexOf(toSearch.toLowerCase()) >= 0) {
+                resulta.push(dato)
+            }
+        }
+        return res.json(resulta)
+
+    })
 }
 
 module.exports = {
-    postProduct,
+
     getProduct,
     catFilter,
+    selectCat,
+    selectedCat,
     searchFilter
 }

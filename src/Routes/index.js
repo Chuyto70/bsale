@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const { postProduct, getProduct, catFilter, searchFilter } = require('../services/services')
+const { getProduct, catFilter, selectCat, selectedCat, searchFilter } = require('../services/services')
+const pool = require('../db')
 
-router.get('/items', getProduct)
-router.post('/category', postProduct);
-router.get('/:category', catFilter);
-router.get('/search/:nombre', searchFilter);
+
+router.get('/hola', getProduct)
+router.get('/categorias', catFilter)
+router.get('/categorias/:id', selectCat)
+router.get('/cat/:id', selectedCat)
+router.get('/search/:name', searchFilter)
+
 
 module.exports = router;
